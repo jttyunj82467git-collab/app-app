@@ -1,1 +1,1 @@
-let task = "数学";
+let task = "理科";
