@@ -1,1 +1,1 @@
-console.log("PRテスト");
+console.log("PRテスト")
