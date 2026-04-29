@@ -5,6 +5,21 @@
 </head>
 <body>
 
-<h1>こんにちは</h1>
+<h1>課題管理</h1>
+<input type="text" id="title" placeholder="課題名">
+<input type="date" id="deadline">
+
+<select id="subject">
+  <option>数学</option>
+  <option>英語</option>
+  <option>理科</option>
+  <option>国語</option>
+  <option>社会</option>
+</select>
+
+<button onclick="addTask()">追加</button>>
+<ul id="tasklist"></ul>
+
+<script src="script.js"></script>
 </body>
 </html> 
