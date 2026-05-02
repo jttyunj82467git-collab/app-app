@@ -1,6 +1,7 @@
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 function saveTasks() {
     localStorage.setItem("tasks",JSON.stringify(tasks));
+}
 function addTask() {
     const title = document.getElementById("title").value;
     const deadline = document.getElementById("deadline").value;
@@ -14,7 +15,7 @@ function addTask() {
         completed: false
     };
 
-    tasks.push(newTask);
+    tasks.push(newTasks);
     saveTasks();
     renderTasks();
 }
@@ -37,3 +38,4 @@ function deleteTask(id) {
     saveTasks();
     renderTasks();
 }
+renderTasks();
