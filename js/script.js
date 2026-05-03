@@ -23,13 +23,27 @@ function renderTasks() {
     const list = document.getElementById("tasklist");
     list.innerHTML = "";
 
+    tasks.sort((a, b) => a.completed - b.completed);
+
+    const completedCount = tasks.filter(t => t.completed).length;
+    document.getElementById("status").textContent =
+      `${completedCount} / ${tasks.length} 完了`;
+    
     tasks.forEach(task => {
         const li =document.createElement("li");
 
         li.innerHTML = `
+          <input type="checkbox"
+            ${task.completed ? "checked" : ""}
+            onchange="toggleComplete(${task.id})"
+          >
+          
+          <span style="${task.completed ? 'text-decoration: line-through; color:gray;' : ''}">
           ${task.title} (${task.deadline})
+          </span>
+          
           <button onclick="deleteTask(${task.id})">削除</button>
-          `;
+        `;
         list.appendChild(li);
     });
 }
@@ -39,3 +53,13 @@ function deleteTask(id) {
     renderTasks();
 }
 renderTasks();
+function toggleComplete(id) {
+    tasks = tasks.map(task => {
+        if (task.id === id) {
+            return { ...task, completed: !task.completed };
+        }
+        return task;
+    });
+    saveTasks();
+    renderTasks();
+}
