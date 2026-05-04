@@ -25,12 +25,17 @@ function renderTasks() {
 
     tasks.sort((a, b) => a.completed - b.completed);
 
+    const today = new Date();
+
     const completedCount = tasks.filter(t => t.completed).length;
     document.getElementById("status").textContent =
       `${completedCount} / ${tasks.length} 完了`;
     
     tasks.forEach(task => {
         const li =document.createElement("li");
+
+        const deadlineDate = new Date(task.deadline);
+        const isOverdue = deadlineDate < today && !task.completed;
 
         li.innerHTML = `
           <input type="checkbox"
