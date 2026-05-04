@@ -42,7 +42,8 @@ function renderTasks() {
             ${task.completed ? "checked" : ""}
             onchange="toggleComplete(${task.id})"
           >
-          
+          <span style="${isOverdue ? 'color:red;':''}">
+            ${task.title} (${task.deadline})
           <span style="${task.completed ? 'text-decoration: line-through; color:gray;' : ''}">
           ${task.title} (${task.deadline})
           </span>
