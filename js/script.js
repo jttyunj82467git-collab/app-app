@@ -25,7 +25,6 @@ function renderTasks() {
 
     tasks.sort((a, b) => a.completed - b.completed);
 
-    const today = new Date();
 
     const completedCount = tasks.filter(t => t.completed).length;
     document.getElementById("status").textContent =
@@ -35,16 +34,13 @@ function renderTasks() {
         const li =document.createElement("li");
 
         const deadlineDate = new Date(task.deadline);
-        const isOverdue = deadlineDate < today && !task.completed;
-
+        
         li.innerHTML = `
           <input type="checkbox"
             ${task.completed ? "checked" : ""}
             onchange="toggleComplete(${task.id})"
           >
-          <span style="${isOverdue ? 'color:red;':''}">
-            ${task.title} (${task.deadline})
-          </span>
+
           <span style="${task.completed ? 'text-decoration: line-through; color:gray;' : ''}">
           ${task.title} (${task.deadline})
           </span>
