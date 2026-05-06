@@ -44,6 +44,7 @@ function renderTasks() {
           >
           <span style="${isOverdue ? 'color:red;':''}">
             ${task.title} (${task.deadline})
+          </span>
           <span style="${task.completed ? 'text-decoration: line-through; color:gray;' : ''}">
           ${task.title} (${task.deadline})
           </span>
