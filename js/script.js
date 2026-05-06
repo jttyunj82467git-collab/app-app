@@ -23,6 +23,8 @@ function renderTasks() {
     const list = document.getElementById("tasklist");
     list.innerHTML = "";
 
+    const today = new Date ();
+
     tasks.sort((a, b) => a.completed - b.completed);
 
 
@@ -34,7 +36,10 @@ function renderTasks() {
         const li =document.createElement("li");
 
         const deadlineDate = new Date(task.deadline);
-        
+        const isOverdue = deadlineDate < today && !task.completed;
+
+        li.classList.toggle("Overdue", isOverdue);
+
         li.innerHTML = `
           <input type="checkbox"
             ${task.completed ? "checked" : ""}
